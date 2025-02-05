@@ -71,14 +71,13 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
     <script>
         $(document).ready(function() {
-            // Khởi tạo sách với turn.js
             var book = $('#book').turn({
                 width: 800,
                 height: 600,
                 autoCenter: true,
-                display: 'double',  // Hiển thị 2 trang cùng lúc
+                display: 'single', // Hiển thị một trang mỗi lần
                 pages: 2,           // Tổng số trang
-                gradients: true,    // Thêm hiệu ứng gradient khi lật
+                gradients: true,    // Hiệu ứng gradient khi lật trang
                 when: {
                     turning: function(event, page, view) {
                         console.log('Đang lật trang: Trang ' + page);
