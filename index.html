@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sách Điện Tử</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        #book-container {
+            width: 60%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        #navigation {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sách Điện Tử</h1>
+    <div id="book-container">
+        <div id="content">Nội dung sẽ hiển thị ở đây...</div>
+    </div>
+    <div id="navigation">
+        <button onclick="prevPage()">Trang trước</button>
+        <button onclick="nextPage()">Trang sau</button>
+    </div>
+    
+    <script>
+        const pages = [
+            "Chào mừng bạn đến với sách điện tử!",
+            "Trang 1: Nội dung của trang đầu tiên.",
+            "Trang 2: Nội dung tiếp theo trong sách.",
+            "Trang 3: Đây là một chương khác trong sách.",
+            "Cảm ơn bạn đã đọc sách!"
+        ];
+        let currentPage = 0;
+
+        function updateContent() {
+            document.getElementById("content").innerText = pages[currentPage];
+        }
+
+        function prevPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                updateContent();
+            }
+        }
+
+        function nextPage() {
+            if (currentPage < pages.length - 1) {
+                currentPage++;
+                updateContent();
+            }
+        }
+
+        updateContent();
+    </script>
+</body>
+</html>
