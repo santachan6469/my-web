@@ -24,27 +24,36 @@
             height: 600px;
             background-color: #f5f5f5;
             border: 1px solid #ddd;
-            display: inline-block;
             position: absolute;
-            top: 0;
-            left: 0;
         }
         .page-content {
             padding: 20px;
             height: 100%;
             overflow: auto;
         }
+        #controls {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 
     <div id="book">
+        <!-- Trang 1 -->
         <div class="page">
             <div class="page-content">
                 <h2>Trang 1</h2>
                 <p>Đây là nội dung của trang 1 trong sách điện tử của bạn!</p>
             </div>
         </div>
+        <!-- Trang 2 -->
         <div class="page">
             <div class="page-content">
                 <h2>Trang 2</h2>
@@ -53,22 +62,39 @@
         </div>
     </div>
 
-    <!-- Thêm jQuery trước turn.js -->
+    <!-- Nút điều khiển -->
+    <div id="controls">
+        <button id="prev">Trang trước</button>
+        <button id="next">Trang sau</button>
+    </div>
+
+    <!-- Thêm jQuery và turn.js -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
     <script>
         $(document).ready(function() {
-            // Tạo hiệu ứng lật trang cho cuốn sách
-            $('#book').turn({
+            // Khởi tạo sách với turn.js
+            var book = $('#book').turn({
                 width: 800,
                 height: 600,
                 autoCenter: true,
                 display: 'single', // Hiển thị 1 trang mỗi lần
+                pages: 2, // Tổng số trang
                 when: {
                     turning: function(event, page, view) {
                         console.log('Đang lật trang: Trang ' + page);
                     }
                 }
+            });
+
+            // Nút "Trang trước"
+            $('#prev').click(function() {
+                book.turn('previous');
+            });
+
+            // Nút "Trang sau"
+            $('#next').click(function() {
+                book.turn('next');
             });
         });
     </script>
