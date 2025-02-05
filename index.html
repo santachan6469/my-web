@@ -24,7 +24,7 @@
             height: 600px;
             background-color: #f5f5f5;
             border: 1px solid #ddd;
-            position: absolute;
+            position: relative;
         }
         .page-content {
             padding: 20px;
@@ -80,6 +80,7 @@
                 autoCenter: true,
                 display: 'single', // Hiển thị 1 trang mỗi lần
                 pages: 2, // Tổng số trang
+                gradients: true, // Thêm hiệu ứng gradient khi lật
                 when: {
                     turning: function(event, page, view) {
                         console.log('Đang lật trang: Trang ' + page);
