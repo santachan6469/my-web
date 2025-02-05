@@ -49,7 +49,6 @@
                 <p>Đây là nội dung của trang 2 trong sách điện tử của bạn!</p>
             </div>
         </div>
-        <!-- Thêm nhiều trang ở đây nếu cần -->
     </div>
 
     <!-- Thêm jQuery trước turn.js -->
@@ -57,10 +56,17 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
     <script>
         $(document).ready(function() {
+            // Tạo hiệu ứng lật trang cho cuốn sách
             $('#book').turn({
                 width: 800,
                 height: 600,
-                autoCenter: true
+                autoCenter: true,
+                display: 'single', // Hiển thị 1 trang mỗi lần
+                when: {
+                    turning: function(event, page, view) {
+                        console.log('Đang lật trang: Trang ' + page);
+                    }
+                }
             });
         });
     </script>
